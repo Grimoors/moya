@@ -209,16 +209,17 @@ def main():
                 "tool_registry": tools
             }
         
-        # Write the log file for this individual user message using the unique message ID
-        write_utterance_flow_log(log_data, unique_msg_id)
-
-        #         # Write the log file for this individual user message using the unique message ID
+        # # Write the log file for this individual user message using the unique message ID
         # write_utterance_flow_log(log_data, unique_msg_id)
+
+        # #         # Write the log file for this individual user message using the unique message ID
+        # # write_utterance_flow_log(log_data, unique_msg_id)
         
-        # Optionally: Call the Visualizer to generate a dot file from the log
-        # Construct the log file path from the printed output. Here we assume the same unique filename pattern.
-        log_filename = f"{unique_msg_id}_User_Utterance_Flow_Log_{USER_NAME}_{USER_ID}_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}_quick_start_openai_logged.json"
-        log_filepath = os.path.join("moya", "explainability", "utterance_history", log_filename)
+        # # Optionally: Call the Visualizer to generate a dot file from the log
+        # # Construct the log file path from the printed output. Here we assume the same unique filename pattern.
+        # log_filename = f"{unique_msg_id}_User_Utterance_Flow_Log_{USER_NAME}_{USER_ID}_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}_quick_start_openai_logged.json"
+        # log_filepath = os.path.join("moya", "explainability", "utterance_history", log_filename)
+        log_filepath = write_utterance_flow_log(log_data, unique_msg_id)
         # Alternatively, if you saved the filepath previously, use it.
         
         # Define a dotfile output path (change as needed)
