@@ -250,9 +250,28 @@ class OpenAIAgent(Agent):
         except json.JSONDecodeError:
             args = {}
 
+
+
         tool = self.tool_registry.get_tool(name)
+
+        # Prepare a log entry for this tool call
+        call_info = {
+            "Tool_call_source": "Agent",
+            "Tool_call_Destination": name,
+            "Tool_call_Arguments": json.dumps(args),
+            "Tool_call_Response": ""
+        }
+
         if tool:
             result = tool.function(**args)
-            return result
-
-        return f"[Tool '{name}' not found]"
+            call_info["Tool_call_Response"] = result
+        else:
+            result = f"[Tool '{name}' not found]"
+            call_info["Tool_call_Response"] = result
+        
+        # Record the call (initialize the list if needed)
+        if not hasattr(self, "tool_call_logs"):
+            self.tool_call_logs = []
+        self.tool_call_logs.append(call_info)
+        
+        return result

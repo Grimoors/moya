@@ -1,0 +1,1 @@
+# Reads the dot file and creates an image from it

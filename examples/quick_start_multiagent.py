@@ -61,7 +61,7 @@ def create_remote_agent(tool_registry) -> RemoteAgent:
             agent_name="joke_agent",
             agent_type="RemoteAgent",
             description="Remote agent specialized in telling jokes",
-            base_url="http://localhost:8001",
+            base_url="http://localhost:8000",
             verify_ssl=True,
             auth_token="your-secret-token-here",
             tool_registry=tool_registry,
@@ -80,7 +80,7 @@ def create_classifier_agent() -> OpenAIAgent:
         4. For any other language requests, return null
         
         Analyze both the language and intent of the message.
-        Return only the agent name as specified above.""",
+        Return only the agent name as specified above."""
 
     agent_config = OpenAIAgentConfig(
         agent_name="classifier",
